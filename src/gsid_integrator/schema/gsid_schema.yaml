@@ -1,0 +1,16 @@
+columns:
+  gsid: {dtype: "int64", unique: true, required: true}
+  instrument_type: {dtype: "category", enum: ["EQUITY","FUTURES","OPTIONS","INDEX","BOND","FUND_EXCH"], required: true}
+  symbol: {dtype: "string", required: true}
+  exchange: {dtype: "string", required: true}
+  name: {dtype: "string", required: true}
+  isin: {dtype: "string", required: false}
+  currency: {dtype: "string", required: true}
+  listed_date: {dtype: "date", required: true}
+  delisted_date: {dtype: "date", required: false}
+  contract_month: {dtype: "string", required: false}
+  expiry: {dtype: "date", required: false}
+  strike: {dtype: "float64", required: false}
+  call_put: {dtype: "category", enum: ["C","P"], required: false}
+  underlying_symbol: {dtype: "string", required: false}
+  updated_at: {dtype: "datetime", required: true}

@@ -1,0 +1,40 @@
+input:
+  base_dir: "data/raw"
+  date: "2025-10-15"   # change as needed
+
+# DB extract is disabled in this quickstart sample.
+extract:
+  enabled: false
+  mode: "incremental"
+  increment_column: "UPDATED_AT"
+  since: "2025-10-14 00:00:00"
+
+# File readers look for CSVs in /data/raw/<source>/<date>/*
+sources:
+  - name: juyuan
+    path: "{base_dir}/juyuan/{date}/*.csv"
+  - name: wind
+    path: "{base_dir}/wind/{date}/*.csv"
+  - name: datayes
+    path: "{base_dir}/datayes/{date}/*.csv"
+
+filters:
+  allowed_instruments: ["EQUITY","FUTURES","OPTIONS","INDEX","BOND","FUND_EXCH"]
+  allowed_exchanges: ["SH","SZ","BJ","HK","CFFEX","SHFE","DCE","CZCE","INE","SSEOPT","SZSEOPT"]
+
+output:
+  gsid_csv: "data/curated/master/security_master/gsid.csv"
+  partition_dir: "data/curated/master/security_master/partitions/dt={date}/gsid.csv"
+  buckets:
+    EQUITY: "data/curated/master/equity/gsid.csv"
+    FUTURES: "data/curated/master/futures/gsid.csv"
+    OPTIONS: "data/curated/master/options/gsid.csv"
+    INDEX: "data/curated/master/index/gsid.csv"
+    BOND: "data/curated/master/bond/gsid.csv"
+    FUND_EXCH: "data/curated/master/fund/gsid.csv"
+
+merge:
+  primary_keys: ["symbol","exchange"]
+  fallback_keys: ["isin"]
+  source_priority: ["wind","juyuan","datayes"]
+  tie_breaker: "updated_at"

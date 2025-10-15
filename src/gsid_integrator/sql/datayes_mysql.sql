@@ -1,0 +1,7 @@
+SELECT s.SECURITY_CODE, s.EXCHANGE_CODE, s.SECURITY_NAME, s.ISIN, s.CURRENCY,
+       s.LIST_DATE, s.DELIST_DATE,
+       s.SECURITY_TYPE AS SRC_INSTRUMENT_TYPE,
+       s.UPDATE_TIME AS UPDATED_AT
+FROM datayes.security_master s
+WHERE (@mode = 'full') OR (@mode = 'incremental' AND s.UPDATE_TIME >= @since)
+  AND s.SECURITY_TYPE IN ('EQUITY','INDEX','FUND','BOND','FUTURES','OPTIONS');

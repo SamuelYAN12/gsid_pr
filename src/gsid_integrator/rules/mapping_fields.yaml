@@ -1,0 +1,43 @@
+canonical:
+  symbol: {dtype: "string", required: true}
+  exchange: {dtype: "string", required: true}
+  name: {dtype: "string", required: true}
+  isin: {dtype: "string", required: false}
+  currency: {dtype: "string", required: true}
+  listed_date: {dtype: "date", required: true}
+  delisted_date: {dtype: "date", required: false}
+  instrument_type: {dtype: "category", enum: ["EQUITY","FUTURES","OPTIONS","INDEX","BOND","FUND_EXCH"]}
+  updated_at: {dtype: "datetime", required: true}
+
+sources:
+  juyuan:
+    symbol: "SECU_CODE"
+    exchange: "EXCHANGE"
+    name: "SECU_NAME"
+    isin: "ISIN"
+    currency: "CURRENCY"
+    listed_date: "LIST_DATE"
+    delisted_date: "DELIST_DATE"
+    instrument_type: "SRC_INSTRUMENT_TYPE"
+    updated_at: "UPDATED_AT"
+  wind:
+    # WINDCODE e.g. 000001.SZ — will be split into symbol/exchange
+    symbol: "WINDCODE"
+    exchange: null
+    name: "S_INFO_NAME"
+    isin: "S_INFO_ISIN"
+    currency: "S_INFO_CURRENCY"
+    listed_date: "S_INFO_LISTDATE"
+    delisted_date: "S_INFO_DELISTDATE"
+    instrument_type: "SRC_INSTRUMENT_TYPE"
+    updated_at: "UPDATED_AT"
+  datayes:
+    symbol: "SECURITY_CODE"
+    exchange: "EXCHANGE_CODE"
+    name: "SECURITY_NAME"
+    isin: "ISIN"
+    currency: "CURRENCY"
+    listed_date: "LIST_DATE"
+    delisted_date: "DELIST_DATE"
+    instrument_type: "SRC_INSTRUMENT_TYPE"
+    updated_at: "UPDATED_AT"

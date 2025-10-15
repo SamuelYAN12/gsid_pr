@@ -1,0 +1,39 @@
+instrument_type_map:
+  juyuan:
+    EQUITY: EQUITY
+    STOCK: EQUITY
+    INDEX: INDEX
+    FUND: FUND_EXCH
+    ETF: FUND_EXCH
+    LOF: FUND_EXCH
+    BOND: BOND
+    FUTURES: FUTURES
+    OPTIONS: OPTIONS
+  wind:
+    EQUITY: EQUITY
+    Index: INDEX
+    FUND: FUND_EXCH
+    ETF: FUND_EXCH
+    Bond: BOND
+    Futures: FUTURES
+    Options: OPTIONS
+  datayes:
+    STOCK: EQUITY
+    INDEX: INDEX
+    FUND: FUND_EXCH
+    BOND: BOND
+    FUTURES: FUTURES
+    OPTIONS: OPTIONS
+
+exchange_map:
+  SZ: SZ
+  SH: SH
+  BJ: BJ
+  HK: HK
+  CFFEX: CFFEX
+  SHFE: SHFE
+  DCE: DCE
+  CZCE: CZCE
+  INE: INE
+  SSEOPT: SSEOPT
+  SZSEOPT: SZSEOPT
